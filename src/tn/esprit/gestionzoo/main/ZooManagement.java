@@ -76,32 +76,35 @@ public class ZooManagement {
         //--------------------- Prosit 5
         // ✅ Instruction 21 : Constructeurs par défaut
         System.out.println("=== Constructeurs par défaut ===");
-        Aquatic a1 = new Aquatic();
         Terrestrial t1 = new Terrestrial();
         Dolphin d1 = new Dolphin();
         Penguin p1 = new Penguin();
 
-        System.out.println(a1);
         System.out.println(t1);
         System.out.println(d1);
         System.out.println(p1);
 
         // ✅ Instruction 22 : Constructeurs paramétrés
         System.out.println("\n=== Constructeurs paramétrés ===");
-        Aquatic a2 = new Aquatic("Fish", "Shark", 8, false, "Ocean");
         Terrestrial t2 = new Terrestrial("Felidae", "Lion", 5, true, 4);
         Dolphin d2 = new Dolphin("Delphinidae", "Flipper", 6, true, "Sea", 25.5f);
         Penguin p2 = new Penguin("Spheniscidae", "Pingo", 3, false, "Iceberg", 15.0f);
 
-        System.out.println(a2);
         System.out.println(t2);
         System.out.println(d2);
         System.out.println(p2);
 
-        // ✅ Instruction 24 : Méthode swim()
-        System.out.println("=== Test des méthodes swim() ===");
-        a2.swim();  // Aquatic
-        d2.swim();  // Dolphin (redéfinition)
-        p2.swim();  // Penguin hérite de Aquatic → même message que Aquatic
+        // ✅ Prosit 6 : tableau polymorphique d'animaux aquatiques
+        System.out.println("=== Prosit 6 ===");
+        myZoo.addAquatic(d2);
+        myZoo.addAquatic(p2);
+        myZoo.addAquatic(new Dolphin("Delphinidae", "Dolly", 8, true, "Sea", 30.0f));
+        myZoo.swimAllAquatics();
+        System.out.println("Profondeur maximale des pingouins : "
+                + myZoo.maxPenguinSwimmingDepth() + " mètres");
+        myZoo.displayNumberOfAquaticsByType();
+
+        Aquatic sameAsP2 = new Penguin("Other family", "Pingo", 3, true, "Iceberg", 20.0f);
+        System.out.println("Pingouins identiques : " + p2.equals(sameAsP2));
     }
 }
